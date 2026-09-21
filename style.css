@@ -1,0 +1,70 @@
+
+        body {
+            background-color: #0B0F17;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        /* Futuristic Glassmorphism Effects */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 20px 35px -10px rgba(0, 242, 254, 0.25);
+            transform: translateY(-6px);
+        }
+        
+        /* Vibrant Electric Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .bg-gradient-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.12) 0%, rgba(11, 15, 23, 0) 70%);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F2FE;
+        }
+        
+        /* Filter Button Active State */
+        .filter-btn.active {
+            background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+            color: #0B0F17;
+            font-weight: 700;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+   

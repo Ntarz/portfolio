@@ -1,27 +1,1040 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Nelbert Tare | Software Developer & Shopify Specialist</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0B0F17',
+                        navyDark: '#111827',
+                        surface: '#1E293B',
+                        cyanGlow: '#00F2FE',
+                        blueGlow: '#4FACFE',
+                        amberGold: '#F59E0B',
+                        emeraldAccent: '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1>Hi, I'm [Your Name]</h1>
-        <p>Web Developer & Designer</p>
+<body class="bg-obsidian text-slate-200 antialiased selection:bg-cyanGlow selection:text-obsidian">
+
+    <header class="fixed top-0 left-0 w-full z-40 glass-panel border-b border-slate-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyanGlow via-blueGlow to-indigo-600 flex items-center justify-center font-heading font-extrabold text-obsidian text-xl shadow-lg shadow-cyanGlow/25 group-hover:scale-105 transition-transform">
+                    NT
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-extrabold text-lg text-white leading-tight">Nelbert Tare</span>
+                    <span class="text-xs text-cyanGlow font-semibold tracking-wide">Shopify & Software Dev</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-cyanGlow transition-colors">About</a>
+                <a href="#qualifications" class="text-slate-300 hover:text-cyanGlow transition-colors">Qualifications</a>
+                <a href="#projects" class="text-slate-300 hover:text-cyanGlow transition-colors">Shopify Stores</a>
+                <a href="#experience" class="text-slate-300 hover:text-cyanGlow transition-colors">Experience</a>
+                <a href="#contact" class="text-slate-300 hover:text-cyanGlow transition-colors">Contact</a>
+            </nav>
+
+            <!-- Navigation Actions CTA -->
+            <div class="hidden md:flex items-center space-x-4">
+                <button onclick="openResumeModal()" class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-slate-800/90 hover:bg-slate-700 border border-slate-700 hover:border-cyanGlow/50 transition-all shadow-sm">
+                    <i class="fa-solid fa-file-pdf mr-2 text-cyanGlow"></i> Interactive CV
+                </button>
+                <a href="#contact" class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-bold text-obsidian bg-gradient-to-r from-cyanGlow to-blueGlow hover:brightness-110 transition-all shadow-lg shadow-cyanGlow/25">
+                    Get in Touch
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu Panel -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">About</a>
+            <a href="#qualifications" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Qualifications</a>
+            <a href="#projects" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Shopify Stores</a>
+            <a href="#experience" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Experience</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Contact</a>
+            <div class="pt-4 flex flex-col space-y-3 border-t border-slate-800">
+                <button onclick="openResumeModal()" class="w-full py-2.5 rounded-xl text-sm font-semibold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center">
+                    <i class="fa-solid fa-file-pdf mr-2 text-cyanGlow"></i> View Interactive CV
+                </button>
+                <a href="#contact" class="mobile-link w-full text-center py-2.5 rounded-xl text-sm font-bold text-obsidian bg-gradient-to-r from-cyanGlow to-blueGlow">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
     </header>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <article>
-            <h3>Project Title</h3>
-            <p>Short description of what was built.</p>
-        </article>
-    </section>
+    <main class="pt-20">
+        <section id="about" class="relative min-h-[92vh] flex items-center pt-12 pb-20 bg-gradient-glow overflow-hidden">
+            <!-- Background Glow Orbs -->
+            <div class="absolute top-1/4 left-10 w-96 h-96 bg-cyanGlow/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-blueGlow/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <footer>
-        <p>Connect with me on <a href="https://github.com/your-username">GitHub</a></p>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Intro -->
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <!-- Status Badge -->
+                        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-800/80 border border-cyanGlow/30 text-cyanGlow text-xs font-semibold tracking-wide shadow-inner">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emeraldAccent mr-2 animate-pulse"></span>
+                            Available for Shopify & Web Engineering Projects
+                        </div>
+
+                        <!-- Main Heading & Title -->
+                        <div class="space-y-3">
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+                                Hi, I'm <span class="text-gradient">Nelbert Tare</span>
+                            </h1>
+                            <p class="text-xl sm:text-2xl font-bold text-slate-300">
+                                Software Developer | Shopify Specialist & Web Engineer
+                            </p>
+                        </div>
+
+                        <!-- Detailed Bio Introduction -->
+                        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                            Hi, I'm Nelbert Tare, 25 years old from the Philippines. I graduated with honors from the <strong class="text-white">University of Science and Technology of Southern Philippines (USTP)</strong> with a <strong class="text-white">Bachelor of Science in Information Technology (BSIT)</strong>. I have about 3 years of hands-on experience building, customizing, and managing Shopify stores. I specialize in backend management, product setup, app installation, and custom theme development using Liquid, HTML, CSS, JavaScript, Metafields, and Metaobjects.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#projects" class="px-7 py-3.5 rounded-xl font-bold text-obsidian bg-gradient-to-r from-cyanGlow to-blueGlow hover:brightness-110 transition-all shadow-lg shadow-cyanGlow/25 flex items-center space-x-2">
+                                <span>Explore Store Projects</span>
+                                <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                            <a href="#experience" class="px-7 py-3.5 rounded-xl font-semibold text-slate-200 bg-slate-800/90 hover:bg-slate-700 hover:text-white border border-slate-700 transition-all flex items-center space-x-2">
+                                <i class="fa-solid fa-briefcase text-cyanGlow"></i>
+                                <span>View Experience</span>
+                            </a>
+                            <button onclick="openResumeModal()" class="px-7 py-3.5 rounded-xl font-semibold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all flex items-center space-x-2">
+                                <i class="fa-solid fa-award"></i>
+                                <span>Download / View CV</span>
+                            </button>
+                        </div>
+
+                        <!-- Quick Tech Pills -->
+                        <div class="pt-6 border-t border-slate-800/80">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Core Expertise & Tech Stack</p>
+                            <div class="flex flex-wrap justify-center lg:justify-start gap-2">
+                                <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-slate-200 text-xs font-medium border border-slate-700"><i class="fa-brands fa-shopify text-emeraldAccent mr-1.5"></i>Shopify Liquid</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-slate-200 text-xs font-medium border border-slate-700"><i class="fa-solid fa-cubes text-cyanGlow mr-1.5"></i>Metafields & Metaobjects</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-slate-200 text-xs font-medium border border-slate-700"><i class="fa-brands fa-js text-amberGold mr-1.5"></i>JavaScript / HTML5 / CSS3</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-slate-200 text-xs font-medium border border-slate-700"><i class="fa-brands fa-wordpress text-blue-400 mr-1.5"></i>WordPress</span>
+                                <span class="px-3 py-1 rounded-lg bg-slate-800/90 text-slate-200 text-xs font-medium border border-slate-700"><i class="fa-solid fa-graduation-cap text-amberGold mr-1.5"></i>Moodle Platforms</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Visual Card / Profile Highlight -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <!-- Card Glow Outer Frame -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-cyanGlow via-blueGlow to-indigo-600 rounded-3xl blur opacity-30"></div>
+                            
+                            <div class="relative glass-card rounded-2xl p-6 sm:p-8 space-y-6 border border-slate-700/60">
+                                <!-- Profile Badge Header -->
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyanGlow via-blueGlow to-indigo-600 p-1 shadow-xl">
+                                        <div class="w-full h-full bg-navyDark rounded-[14px] flex items-center justify-center text-3xl font-black text-cyanGlow">
+                                            NT
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Nelbert Tare</h3>
+                                        <p class="text-sm text-cyanGlow font-semibold">Shopify & Software Developer</p>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30 mt-1">
+                                            <i class="fa-solid fa-medal mr-1"></i> USTP Honors Graduate
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Key Statistics Grid -->
+                                <div class="grid grid-cols-2 gap-3 py-4 border-y border-slate-800">
+                                    <div class="bg-slate-800/50 p-3.5 rounded-xl border border-slate-800 text-center">
+                                        <span class="block text-2xl font-black text-white">3+</span>
+                                        <span class="text-xs text-slate-400 font-medium">Years Shopify Dev</span>
+                                    </div>
+                                    <div class="bg-slate-800/50 p-3.5 rounded-xl border border-slate-800 text-center">
+                                        <span class="block text-2xl font-black text-cyanGlow">10+</span>
+                                        <span class="text-xs text-slate-400 font-medium">Featured Live Stores</span>
+                                    </div>
+                                    <div class="bg-slate-800/50 p-3.5 rounded-xl border border-slate-800 text-center">
+                                        <span class="block text-2xl font-black text-amberGold">3+</span>
+                                        <span class="text-xs text-slate-400 font-medium">Years Moodle & Web</span>
+                                    </div>
+                                    <div class="bg-slate-800/50 p-3.5 rounded-xl border border-slate-800 text-center">
+                                        <span class="block text-2xl font-black text-emeraldAccent">25</span>
+                                        <span class="text-xs text-slate-400 font-medium">Years Old (PH)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Key Highlights -->
+                                <ul class="space-y-2.5 text-xs text-slate-300">
+                                    <li class="flex items-start">
+                                        <i class="fa-solid fa-check text-emeraldAccent mr-2.5 mt-0.5"></i>
+                                        <span>Full WooCommerce to Shopify Data Migrations</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fa-solid fa-check text-emeraldAccent mr-2.5 mt-0.5"></i>
+                                        <span>Custom B2B Quote Engines & Dynamic Metafield UI</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fa-solid fa-check text-emeraldAccent mr-2.5 mt-0.5"></i>
+                                        <span>GA4, Google Merchant Center & Ads Integration</span>
+                                    </li>
+                                </ul>
+
+                                <button onclick="openResumeModal()" class="w-full py-3 rounded-xl bg-cyanGlow/10 hover:bg-cyanGlow/20 text-cyanGlow border border-cyanGlow/30 text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center space-x-2">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>Preview Full Interactive CV</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="qualifications" class="py-20 bg-navyDark/60 border-y border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                    <h2 class="text-xs font-bold text-cyanGlow uppercase tracking-widest">Key Qualifications</h2>
+                    <p class="text-3xl sm:text-4xl font-black text-white">Core Skills & Specializations</p>
+                    <p class="text-slate-400 text-sm sm:text-base">A complete summary of technical background, academic distinction, and platform expertise.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Qualification Card 1 -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-cyanGlow/10 border border-cyanGlow/20 flex items-center justify-center text-cyanGlow text-2xl mb-4">
+                                <i class="fa-brands fa-shopify"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">3+ Years Shopify & Liquid Architecture</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                                Extensive experience building themes from scratch, customizing Liquid sections, developing slide-out carts, and optimizing page speeds.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Liquid Sections</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Storefront API</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">AJAX Carts</span>
+                        </div>
+                    </div>
+
+                    <!-- Qualification Card 2 -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amberGold text-2xl mb-4">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">USTP BSIT Graduate (With Honors)</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                                Earned a Bachelor of Science in Information Technology with academic distinction from the University of Science and Technology of Southern Philippines.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">With Honors</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">USTP Alum</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Software Dev</span>
+                        </div>
+                    </div>
+
+                    <!-- Qualification Card 3 -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blueGlow text-2xl mb-4">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Metafields & Metaobjects Specialist</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                                Advanced setup of dynamic data structures, custom discount logic badges, in-stock indicators, and tailor-made store components.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Metafields</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Metaobjects</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Dynamic UI</span>
+                        </div>
+                    </div>
+
+                    <!-- Qualification Card 4 -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emeraldAccent text-2xl mb-4">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">E-Commerce Marketing & Automation</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                                Setting up marketing flows and app integrations across Klaviyo, Shopify Flow, Kajabi, Mailchimp, and Zapier for automated growth.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Klaviyo Flows</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Shopify Flow</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Zapier</span>
+                        </div>
+                    </div>
+
+                    <!-- Qualification Card 5 -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl mb-4">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Moodle Platform Developer (3+ Years)</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                                Experienced Moodle engineer customizing learning management themes, core databases, LMS plugins, and system maintenance.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Moodle LMS</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Database Scripts</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">PHP</span>
+                        </div>
+                    </div>
+
+                    <!-- Qualification Card 6 -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-2xl mb-4">
+                                <i class="fa-brands fa-wordpress"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">WordPress & Full-Stack Web Engineering</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                                Full proficiency with WordPress custom theme/plugin development, MySQL databases, and seamless WooCommerce data extractions.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">WordPress</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">WooCommerce</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px]">Full Stack</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title & Search Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 space-y-4 md:space-y-0">
+                    <div>
+                        <h2 class="text-xs font-bold text-cyanGlow uppercase tracking-widest mb-2">Portfolio Showcase</h2>
+                        <h3 class="text-3xl sm:text-4xl font-black text-white">Featured Shopify & Web Projects</h3>
+                    </div>
+                    
+                    <!-- Live Search Input Bar -->
+                    <div class="relative w-full md:w-80">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                        <input type="text" id="projectSearch" onkeyup="filterProjects()" placeholder="Search projects by name or key features..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyanGlow transition-colors">
+                    </div>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-2 mb-10" id="filterBtnContainer">
+                    <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-800/80 text-slate-300 hover:text-white transition-all" onclick="setCategoryFilter('all', this)">
+                        All Projects
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-800/80 text-slate-300 hover:text-white transition-all" onclick="setCategoryFilter('built', this)">
+                        Featured Built Stores
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-800/80 text-slate-300 hover:text-white transition-all" onclick="setCategoryFilter('custom', this)">
+                        Managed & Custom Features
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-800/80 text-slate-300 hover:text-white transition-all" onclick="setCategoryFilter('migration', this)">
+                        WooCommerce Migrations
+                    </button>
+                </div>
+
+                <!-- Projects Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+
+                    <!-- Project 1: Victory Wipes -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="custom" data-title="victory wipes slide-out cart bundle app layout">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-cyan-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-cyanGlow/10 text-cyanGlow flex items-center justify-center text-2xl mb-3 border border-cyanGlow/20 shadow-lg">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-cyanGlow tracking-widest uppercase">Cart & Bundle Specialist</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Victory Wipes</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Shopify Store</span>
+                                <a href="https://govictorywipes.com/" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Store ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-cyanGlow uppercase tracking-wider block mb-1">Custom Sections & Cart App</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Victory Wipes Store Customization</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Created custom Liquid sections, enhanced overall product page layout, installed and tailored a bundle offer app, and fully customized a smooth slide-out drawer cart page.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Custom Liquid</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Slide-out Cart</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Bundle App</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Silvoz -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="built" data-title="silvoz build from scratch custom free theme">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-indigo-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-3 border border-indigo-500/20 shadow-lg">
+                                    <i class="fa-solid fa-store"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-indigo-400 tracking-widest uppercase">Built From Scratch</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Silvoz</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Shopify Store</span>
+                                <a href="https://silvoz.com" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Store ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-indigo-400 uppercase tracking-wider block mb-1">Full Store Build</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Silvoz E-Commerce Store</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Architected and built completely from scratch utilizing a custom-tailored free theme foundation, optimized product catalog, and personalized branding.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Theme Build</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Catalog Setup</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Custom Branding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Everride Electric -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="built" data-title="everride electric ev store build scratch catalog app setup">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-emerald-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center text-2xl mb-3 border border-emeraldAccent/20 shadow-lg">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-emeraldAccent tracking-widest uppercase">EV Store Development</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Everride Electric</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Shopify Store</span>
+                                <a href="https://everrideelectric.com" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Store ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-emeraldAccent uppercase tracking-wider block mb-1">Scratch Build & App Integration</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Everride Electric Store</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Engineered store from scratch, configured complex product variant catalogs, performed app setup, and designed custom electric vehicle feature showcases.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">EV Catalog</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">App Setup</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Scratch Build</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: The Clothesline Store -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="custom" data-title="the clothesline store Australia liquid section page speed layout fix">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-blue-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blueGlow flex items-center justify-center text-2xl mb-3 border border-blue-500/20 shadow-lg">
+                                    <i class="fa-solid fa-shirt"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-blueGlow tracking-widest uppercase">AU E-Commerce Customization</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">The Clothesline Store</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Shopify Store</span>
+                                <a href="https://www.theclotheslinestore.com.au" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Store ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-blueGlow uppercase tracking-wider block mb-1">Liquid Tuning & Speed Revamp</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">The Clothesline Store (AU)</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Created bespoke Liquid sections, debugged and repaired broken responsive layout templates, and significantly optimized store page load speeds.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Speed Optimization</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Layout Repair</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Liquid Sections</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Teacher For A Day -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="migration" data-title="teacher for a day woocommerce to shopify full migration transfer">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-purple-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-3 border border-purple-500/20 shadow-lg">
+                                    <i class="fa-solid fa-right-left"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-purple-400 tracking-widest uppercase">Full WooCommerce Migration</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Teacher For A Day</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Shopify Store</span>
+                                <a href="https://teacherforaday.com/" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Store ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider block mb-1">Platform Migration</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Teacher For A Day Platform</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Executed a complete WooCommerce to Shopify migration, accurately transferring all products, customer databases, orders, and custom business logic.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">WooCommerce</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Shopify Migration</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Data Sync</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Fire Magic Grills Australia -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="custom" data-title="fire magic grills Australia luxury branding homepage product landing page">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-amber-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-amberGold/10 text-amberGold flex items-center justify-center text-2xl mb-3 border border-amberGold/20 shadow-lg">
+                                    <i class="fa-solid fa-fire"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-amberGold tracking-widest uppercase">Luxury Brand Customization</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Fire Magic Grills AU</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Shopify Store</span>
+                                <a href="https://firemagicgrills.com.au/" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Store ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-amberGold uppercase tracking-wider block mb-1">Luxury Theme Customization</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Fire Magic Grills Australia</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Comprehensive customization across all store pages (Homepage, Product Pages, Landing Pages) to align with high-end luxury grilling branding.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Luxury Styling</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Landing Pages</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Product Templates</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: Simply Clotheslines -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="custom" data-title="simply clotheslines metafields badges infinite scroll discount in-stock">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-teal-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-teal-500/10 text-teal-300 flex items-center justify-center text-2xl mb-3 border border-teal-500/20 shadow-lg">
+                                    <i class="fa-solid fa-tags"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-teal-300 tracking-widest uppercase">Metafield & Scroll Engine</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Simply Clotheslines</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Store Collection</span>
+                                <a href="https://www.simplyclotheslines.com.au/collections/all" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Collection ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-teal-300 uppercase tracking-wider block mb-1">Dynamic Metafields & Infinite Scroll</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Simply Clotheslines Collection</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Customized product cards to display dynamic discount percentage badges and in-stock badges driven by product metafields. Implemented infinite scroll loading.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Metafields UI</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Infinite Scroll</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Discount Badges</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Robert Is Here -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="built" data-title="robert is here mobile responsive UX homepage product section">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-rose-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl mb-3 border border-rose-500/20 shadow-lg">
+                                    <i class="fa-solid fa-mobile-screen-button"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-rose-400 tracking-widest uppercase">Mobile & UX Optimization</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Robert Is Here</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Shopify Store</span>
+                                <a href="https://www.robertishere.com/" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Live Store ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-rose-400 uppercase tracking-wider block mb-1">Mobile Responsiveness & UX</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Robert Is Here Store</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Transformed the website to be 100% mobile responsive, customized key homepage and product sections, and optimized overall e-commerce UX.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Mobile Responsive</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">UX Redesign</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Liquid Sections</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 9: Bakers Bulk -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="custom" data-title="bakers bulk custom quote system B2B wholesale inquiry liquid form">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-yellow-950 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-300 flex items-center justify-center text-2xl mb-3 border border-amber-500/20 shadow-lg">
+                                    <i class="fa-solid fa-calculator"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-amber-300 tracking-widest uppercase">Custom B2B Quote Engine</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Bakers Bulk</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Quote Page</span>
+                                <a href="https://bakersbulk.com/pages/request-a-quote" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>View Quote Page ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block mb-1">Custom B2B Quotation System</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Bakers Bulk Request-a-Quote</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Designed and custom-coded a tailor-made B2B quote request page where users can select multiple bulk products to generate a custom inquiry quotation.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">B2B Quote System</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Custom JS Logic</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Wholesale UI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 10: Live Dev Showcase & Demos -->
+                    <div class="project-card group glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800" data-category="built" data-title="live dev showcase staging theme component testing liquid demo hostinger">
+                        <div class="relative h-56 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                            <div class="w-full h-full bg-gradient-to-br from-cyan-900 via-slate-900 to-obsidian flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-14 h-14 rounded-2xl bg-cyanGlow/10 text-cyanGlow flex items-center justify-center text-2xl mb-3 border border-cyanGlow/20 shadow-lg">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                </div>
+                                <span class="text-xs font-extrabold text-cyanGlow tracking-widest uppercase">Staging & Component Testing</span>
+                                <h4 class="text-xl font-extrabold text-white mt-1">Dev Testing Sandbox</h4>
+                            </div>
+                            <div class="absolute inset-0 bg-obsidian/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                <span class="text-xs text-cyanGlow font-bold uppercase tracking-wider">Live Staging Site</span>
+                                <a href="https://mediumblue-dotterel-314344.hostingersite.com/tvs/" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold shadow-lg hover:scale-105 transition-transform flex items-center space-x-2">
+                                    <span>Visit Staging Site ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[11px] font-bold text-cyanGlow uppercase tracking-wider block mb-1">Live Development Environment</span>
+                                <h4 class="text-lg font-bold text-white group-hover:text-cyanGlow transition-colors">Live Dev Showcase & Demos</h4>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                                    Active staging server for custom Liquid code prototyping, component testing, layout sandboxing, and theme development demos.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Staging Lab</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Custom Components</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 bg-navyDark/60 border-t border-slate-800">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title -->
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                    <h2 class="text-xs font-bold text-cyanGlow uppercase tracking-widest">Professional Journey</h2>
+                    <h3 class="text-3xl font-black text-white">Work Experience & Roles</h3>
+                </div>
+
+                <!-- Vertical Timeline -->
+                <div class="relative border-l-2 border-slate-800 ml-4 md:ml-32 space-y-12">
+
+                    <!-- Role 1: Senior Shopify Developer -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-cyanGlow text-cyanGlow flex items-center justify-center text-xs shadow-lg group-hover:scale-110 group-hover:bg-cyanGlow group-hover:text-obsidian transition-all">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+
+                        <!-- Time Badge Desktop -->
+                        <div class="hidden md:block absolute -left-36 top-2 w-28 text-right text-xs font-extrabold text-cyanGlow">
+                            3+ Years
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800">
+                            <span class="md:hidden inline-block text-xs font-bold text-cyanGlow mb-2">3+ Years</span>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                                <div>
+                                    <h4 class="text-xl font-extrabold text-white">Senior Shopify Developer & E-Commerce Technical Specialist</h4>
+                                    <p class="text-xs text-cyanGlow font-semibold mt-0.5">Custom Liquid, Themes & Store Management</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-emeraldAccent/10 text-emeraldAccent text-[11px] font-bold w-fit border border-emeraldAccent/20">Active Role</span>
+                            </div>
+
+                            <ul class="space-y-2.5 text-xs text-slate-300 leading-relaxed list-disc list-inside">
+                                <li>Built, customized, and migrated high-traffic Shopify stores both from scratch and from platforms like WooCommerce.</li>
+                                <li>Designed dynamic custom sections with Liquid, HTML, CSS, JavaScript, Metafields, and Metaobjects.</li>
+                                <li>Connected and integrated Shopify stores with Google Merchant Center, Google Analytics 4 (GA4), and Google Ads.</li>
+                                <li>Automated business processes and marketing workflows using Shopify Flow, Klaviyo, Kajabi, Zapier, and Mailchimp.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Role 2: Moodle & Web System Engineer -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-amberGold text-amberGold flex items-center justify-center text-xs shadow-lg group-hover:scale-110 group-hover:bg-amberGold group-hover:text-obsidian transition-all">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+
+                        <div class="hidden md:block absolute -left-36 top-2 w-28 text-right text-xs font-extrabold text-amberGold">
+                            3+ Years
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800">
+                            <span class="md:hidden inline-block text-xs font-bold text-amberGold mb-2">3+ Years</span>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                                <div>
+                                    <h4 class="text-xl font-extrabold text-white">Moodle & Web System Engineer</h4>
+                                    <p class="text-xs text-amberGold font-semibold mt-0.5">LMS Systems & Full-Stack Web Development</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amberGold text-[11px] font-bold w-fit border border-amber-500/20">Specialist</span>
+                            </div>
+
+                            <ul class="space-y-2.5 text-xs text-slate-300 leading-relaxed list-disc list-inside">
+                                <li>Created, managed, and customized Moodle learning platforms, theme interfaces, and core database scripts.</li>
+                                <li>Built custom WordPress themes, customized plugins, and configured specialized page setups.</li>
+                                <li>Managed database structures, SQL scripts, and automated administrative operations.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Direct Contact Details -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="space-y-3">
+                            <h2 class="text-xs font-bold text-cyanGlow uppercase tracking-widest">Get In Touch</h2>
+                            <h3 class="text-3xl sm:text-4xl font-black text-white">Let's Discuss Your Next E-Commerce Project</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Whether you need a custom Shopify Liquid section, a full WooCommerce migration, or an automated B2B quote setup, I'm ready to bring technical excellence to your business.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-center space-x-4 p-4 rounded-xl glass-panel">
+                                <div class="w-11 h-11 rounded-lg bg-cyanGlow/20 text-cyanGlow flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-slate-400 uppercase">Direct Email</span>
+                                    <a href="mailto:nelbert.tare@gmail.com" class="text-sm font-bold text-white hover:text-cyanGlow transition-colors">nelbert.tare@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4 p-4 rounded-xl glass-panel">
+                                <div class="w-11 h-11 rounded-lg bg-emeraldAccent/20 text-emeraldAccent flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-github"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-slate-400 uppercase">GitHub Profile</span>
+                                    <a href="https://github.com/Ntarz" target="_blank" rel="noopener" class="text-sm font-bold text-white hover:text-cyanGlow transition-colors">github.com/Ntarz</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4 p-4 rounded-xl glass-panel">
+                                <div class="w-11 h-11 rounded-lg bg-blueGlow/20 text-blueGlow flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-[11px] font-bold text-slate-400 uppercase">Location & Age</span>
+                                    <span class="text-sm font-bold text-white">25 years old | Philippines</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800 relative">
+                            <h4 class="text-xl font-extrabold text-white mb-6">Send Me a Message</h4>
+                            
+                            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Your Name</label>
+                                        <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Email Address</label>
+                                        <input type="email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Project Scope</label>
+                                    <select class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyanGlow transition-colors">
+                                        <option value="shopify_build">Custom Shopify Theme / Store Build</option>
+                                        <option value="migration">WooCommerce to Shopify Data Migration</option>
+                                        <option value="metafields">Metafields / Metaobjects Customization</option>
+                                        <option value="moodle">Moodle LMS / WordPress Platform Setup</option>
+                                        <option value="marketing">Klaviyo / Shopify Flow Marketing Automation</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Message</label>
+                                    <textarea rows="4" required placeholder="Please outline your store goals, features, or project timeline..." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors"></textarea>
+                                </div>
+
+                                <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow hover:brightness-110 text-obsidian text-sm font-extrabold shadow-lg shadow-cyanGlow/25 transition-all flex items-center justify-center space-x-2">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    <span>Send Project Message</span>
+                                </button>
+                            </form>
+
+                            <!-- Success Banner -->
+                            <div id="formSuccess" class="hidden absolute inset-0 bg-slate-900/95 backdrop-blur rounded-2xl flex flex-col items-center justify-center p-8 text-center space-y-4">
+                                <div class="w-16 h-16 rounded-full bg-emeraldAccent/20 text-emeraldAccent flex items-center justify-center text-3xl">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                                <h4 class="text-2xl font-extrabold text-white">Message Received!</h4>
+                                <p class="text-xs text-slate-300 max-w-sm">Thank you for getting in touch. Nelbert will review your request and reply shortly.</p>
+                                <button onclick="resetContactForm()" class="px-5 py-2 rounded-xl bg-slate-800 text-xs font-semibold text-white border border-slate-700 hover:bg-slate-700">Send Another Message</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-400 bg-obsidian">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Nelbert Tare. All rights reserved. Software Developer & Shopify Specialist.</p>
+            <div class="flex items-center space-x-6">
+                <a href="https://github.com/Ntarz" target="_blank" rel="noopener" class="hover:text-cyanGlow transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
+                <a href="mailto:nelbert.tare@gmail.com" class="hover:text-cyanGlow transition-colors"><i class="fa-solid fa-envelope text-lg"></i></a>
+            </div>
+        </div>
     </footer>
+
+    <div id="resumeModal" class="fixed inset-0 z-50 hidden bg-obsidian/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="relative w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-slate-800/90 border-b border-slate-700 flex items-center justify-between sticky top-0 z-10">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-cyanGlow/20 text-cyanGlow flex items-center justify-center font-black text-sm">
+                        CV
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-extrabold text-white">Nelbert Tare - Curriculum Vitae</h3>
+                        <p class="text-[11px] text-slate-400">Software Developer | Shopify Specialist & Web Engineer</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <button onclick="downloadMockPDF()" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyanGlow to-blueGlow text-obsidian text-xs font-bold hover:brightness-110 transition-all flex items-center space-x-1.5">
+                        <i class="fa-solid fa-print text-xs"></i>
+                        <span class="hidden sm:inline">Print / Download CV</span>
+                    </button>
+                    <button onclick="closeResumeModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Printable Resume Content Body -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-8 bg-slate-900 text-slate-200 text-sm leading-relaxed" id="printableResume">
+                
+                <!-- Resume Top Info Bar -->
+                <div class="border-b border-slate-800 pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-3xl font-black text-white">NELBERT TARE</h2>
+                        <p class="text-cyanGlow font-bold text-xs tracking-wider uppercase mt-1">Software Developer | Shopify Specialist & Web Engineer</p>
+                        <p class="text-xs text-slate-400 mt-0.5">25 years old | Philippines</p>
+                    </div>
+                    <div class="text-xs text-slate-300 space-y-1 sm:text-right">
+                        <p><i class="fa-solid fa-envelope mr-1 text-cyanGlow"></i> nelbert.tare@gmail.com</p>
+                        <p><i class="fa-brands fa-github mr-1 text-cyanGlow"></i> github.com/Ntarz</p>
+                        <p><i class="fa-solid fa-graduation-cap mr-1 text-amberGold"></i> USTP BSIT Graduate (With Honors)</p>
+                    </div>
+                </div>
+
+                <!-- Personal Bio -->
+                <div class="space-y-2">
+                    <h3 class="text-xs font-bold text-cyanGlow uppercase tracking-wider">Professional Profile</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        I am Nelbert Tare, a 25-year-old Software Developer & Shopify Specialist from the Philippines. I graduated with honors from the University of Science and Technology of Southern Philippines (USTP) with a Bachelor of Science in Information Technology (BSIT). I possess approximately 3 years of hands-on experience building, customizing, and managing high-performing Shopify stores. My expertise centers on backend management, product catalog setup, app integration, custom theme creation with Liquid, HTML, CSS, JavaScript, Metafields, and Metaobjects, as well as Moodle LMS engineering.
+                    </p>
+                </div>
+
+                <!-- Key Credentials Matrix -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-bold text-cyanGlow uppercase tracking-wider">Technical Capabilities</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-800">
+                            <span class="font-bold text-white block mb-1">Shopify Development:</span>
+                            <p class="text-slate-400">Custom Liquid Themes, Storefront API, Metafields, Metaobjects, Slide-out Carts, B2B Quote Systems, Custom Badges.</p>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-800">
+                            <span class="font-bold text-white block mb-1">E-Commerce Ecosystem:</span>
+                            <p class="text-slate-400">WooCommerce to Shopify Migrations, Google Merchant Center, GA4 Analytics, Google Ads Integration.</p>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-800">
+                            <span class="font-bold text-white block mb-1">Marketing Automation:</span>
+                            <p class="text-slate-400">Shopify Flow, Klaviyo Automated Sequences, Kajabi, Zapier Webhooks, Mailchimp.</p>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-800">
+                            <span class="font-bold text-white block mb-1">Web Systems & LMS:</span>
+                            <p class="text-slate-400">Moodle LMS Customization (3+ Yrs), WordPress Theme/Plugin Dev, PHP, MySQL Database Scripts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Experience -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-cyanGlow uppercase tracking-wider">Work Experience</h3>
+                    
+                    <div class="space-y-2 border-l-2 border-slate-800 pl-4">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="font-bold text-white text-sm">Senior Shopify Developer & E-Commerce Technical Specialist</h4>
+                            <span class="text-[11px] text-cyanGlow font-bold">3+ Years</span>
+                        </div>
+                        <ul class="list-disc list-inside text-xs text-slate-300 space-y-1">
+                            <li>Built, customized, and migrated high-traffic Shopify stores from scratch and from WooCommerce.</li>
+                            <li>Designed dynamic custom sections using Liquid, HTML, CSS, JS, Metafields, and Metaobjects.</li>
+                            <li>Connected Shopify stores with Google Merchant Center, Google Analytics 4, and Google Ads.</li>
+                            <li>Automated business processes and marketing workflows using Shopify Flow, Klaviyo, Kajabi, Zapier, and Mailchimp.</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-2 border-l-2 border-slate-800 pl-4">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="font-bold text-white text-sm">Moodle & Web System Engineer</h4>
+                            <span class="text-[11px] text-amberGold font-bold">3+ Years</span>
+                        </div>
+                        <ul class="list-disc list-inside text-xs text-slate-300 space-y-1">
+                            <li>Created, managed, and customized Moodle learning platforms and database scripts.</li>
+                            <li>Built custom WordPress themes, plugins, and specialized web setups.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="space-y-2">
+                    <h3 class="text-xs font-bold text-cyanGlow uppercase tracking-wider">Education</h3>
+                    <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                        <div>
+                            <span class="font-bold text-white block">Bachelor of Science in Information Technology (BSIT)</span>
+                            <span class="text-amberGold font-semibold"><i class="fa-solid fa-award mr-1"></i> Graduated With Honors</span>
+                            <span class="text-slate-400 block text-[11px] mt-0.5">University of Science and Technology of Southern Philippines (USTP)</span>
+                        </div>
+                        <span class="text-xs text-slate-400">Philippines</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 bg-slate-800/90 border-t border-slate-700 flex justify-end">
+                <button onclick="closeResumeModal()" class="px-5 py-2 rounded-xl bg-slate-700 text-xs font-bold text-white hover:bg-slate-600 transition-colors">
+                    Close Preview
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Link your external JavaScript file -->
+  <script src="script.js"></script>
 </body>
 </html>
