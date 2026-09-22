@@ -69,7 +69,8 @@ async function handleFormSubmit(e) {
 
     try {
         const formData = new FormData(form);
-
+        formData.append("access_key", "33dcee83-e82d-4ab6-86da-e1fa56e01deb");
+        console.log('formData: ',formData);
         const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
