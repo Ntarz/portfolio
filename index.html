@@ -843,22 +843,25 @@
                     <div class="lg:col-span-7">
                         <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800 relative">
                             <h4 class="text-xl font-extrabold text-white mb-6">Send Me a Message</h4>
-                            
                             <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                                <!-- Web3Forms Access Key & Optional Subject -->
+                                <input type="hidden" name="access_key" value="33dcee83-e82d-4ab6-86da-e1fa56e01deb">
+                                <input type="hidden" name="subject" value="New Portfolio Contact Message">
+
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     <div>
                                         <label class="block text-xs font-bold text-slate-300 mb-1.5">Your Name</label>
-                                        <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors">
+                                        <input type="text" name="name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors">
                                     </div>
                                     <div>
                                         <label class="block text-xs font-bold text-slate-300 mb-1.5">Email Address</label>
-                                        <input type="email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors">
+                                        <input type="email" name="email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-bold text-slate-300 mb-1.5">Project Scope</label>
-                                    <select class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyanGlow transition-colors">
+                                    <select name="project_scope" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyanGlow transition-colors">
                                         <option value="shopify_build">Custom Shopify Theme / Store Build</option>
                                         <option value="migration">WooCommerce to Shopify Data Migration</option>
                                         <option value="metafields">Metafields / Metaobjects Customization</option>
@@ -869,7 +872,7 @@
 
                                 <div>
                                     <label class="block text-xs font-bold text-slate-300 mb-1.5">Message</label>
-                                    <textarea rows="4" required placeholder="Please outline your store goals, features, or project timeline..." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors"></textarea>
+                                    <textarea name="message" rows="4" required placeholder="Please outline your store goals, features, or project timeline..." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyanGlow transition-colors"></textarea>
                                 </div>
 
                                 <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyanGlow to-blueGlow hover:brightness-110 text-obsidian text-sm font-extrabold shadow-lg shadow-cyanGlow/25 transition-all flex items-center justify-center space-x-2">

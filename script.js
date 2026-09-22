@@ -55,26 +55,60 @@
             }, 500);
         }
 
-        // Contact Form Handler
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submitBtn');
-            const successBanner = document.getElementById('formSuccess');
+        // Contact Form Handler with Web3Forms Integration
+async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitBtn = document.getElementById('submitBtn');
+    const successBanner = document.getElementById('formSuccess');
 
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> <span>Sending Message...</span>';
-            submitBtn.disabled = true;
+    // UI Loading state
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> <span>Sending Message...</span>';
+    submitBtn.disabled = true;
 
-            setTimeout(() => {
+    try {
+        const formData = new FormData(form);
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Show your existing custom success banner
+            if (successBanner) {
                 successBanner.classList.remove('hidden');
-            }, 900);
+            }
+        } else {
+            alert('Error: ' + (data.message || 'Something went wrong. Please try again.'));
+            // Re-enable button on error so user can retry
+            submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Send Project Message</span>';
+            submitBtn.disabled = false;
+        }
+            } catch (error) {
+                alert('Network error. Please check your connection and try again.');
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Send Project Message</span>';
+                submitBtn.disabled = false;
+            }
         }
 
         function resetContactForm() {
-            document.getElementById('contactForm').reset();
+            const form = document.getElementById('contactForm');
+            if (form) form.reset();
+
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Send Project Message</span>';
-            submitBtn.disabled = false;
-            document.getElementById('formSuccess').classList.add('hidden');
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Send Project Message</span>';
+                submitBtn.disabled = false;
+            }
+
+            const successBanner = document.getElementById('formSuccess');
+            if (successBanner) {
+                successBanner.classList.add('hidden');
+            }
         }
 
         // Category Filtering & Live Keyword Search
